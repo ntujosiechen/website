@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Josie I Chen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Josie I Chen (陳儀), Associate Professor of Economics at National Taiwan University. Behavioral and experimental economics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column under a portrait masthead; every CV entry sits on a year rail, the way an economics CV is read. */
+:root {
+  --paper: #F4F7F6;
+  --surface: #FFFFFF;
+  --ink: #17201F;
+  --muted: #55625E;
+  --rule: #D5DDDA;
+  --accent: #0A5A63;
+  --accent-soft: #D7EBEA;
+  --tag: #E8EEEC;
+  --display: "Newsreader", "Noto Serif TC", Georgia, "Times New Roman", serif;
+  --zh-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --body: "IBM Plex Sans", "Noto Sans TC", system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1413; --surface: #141C1B; --ink: #E1E9E6; --muted: #98A6A2;
+    --rule: #26322F; --accent: #74C7CD; --accent-soft: #173431; --tag: #1A2523;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1413; --surface: #141C1B; --ink: #E1E9E6; --muted: #98A6A2;
+  --rule: #26322F; --accent: #74C7CD; --accent-soft: #173431; --tag: #1A2523;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; z-index: 10;
+  height: env(safe-area-inset-top, 0px); background: var(--paper);
+}
+img { max-width: 100%; }
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+[lang="zh-Hant"] { font-family: "Noto Sans TC", var(--body); }
+
+.wrap {
+  max-width: 60rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Masthead */
+.masthead {
+  display: grid;
+  grid-template-columns: 9.5rem auto minmax(0, 1fr);
+  grid-template-areas: "photo zh ident";
+  gap: 1.5rem 1.75rem;
+  align-items: end;
+  padding-block: 3rem 2.25rem;
+}
+.portrait { grid-area: photo; margin: 0; }
+.portrait img {
+  display: block; width: 100%; height: auto; aspect-ratio: 360 / 483; object-fit: cover;
+  border-radius: 2px; box-shadow: 0.5rem 0.5rem 0 var(--accent-soft);
+}
+.zh-name {
+  grid-area: zh; margin: 0;
+  writing-mode: vertical-rl;
+  font-family: var(--zh-display); font-weight: 600;
+  font-size: 2.6rem; line-height: 1; letter-spacing: 0.3em;
+  color: var(--accent); align-self: start; padding-top: 0.25rem;
+}
+.ident { grid-area: ident; min-width: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.eyebrow {
+  margin: 0; font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+}
+h1 {
+  margin: 0; font-family: var(--display); font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1; letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.role { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+.role span { display: block; color: var(--muted); font-size: 0.95rem; }
+.contact { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.2rem 1rem; font-size: 0.92rem; }
+.contact dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 0.2rem; }
+.contact dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.6rem; min-width: 0; }
+.email { font-family: var(--mono); font-size: 0.88rem; user-select: all; }
+.copy {
+  font: 500 0.72rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); background: transparent; border: 1px solid var(--rule);
+  border-radius: 999px; padding: 0.3rem 0.6rem; cursor: pointer;
+}
+.copy:hover { border-color: var(--accent); }
+.profiles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.92rem; }
+.profiles a { font-weight: 500; }
+.profiles a::after { content: " ↗"; font-size: 0.8em; }
+
+/* Tabs */
+.tabs {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.tabs ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.75rem; overflow-x: auto; scrollbar-width: none; }
+.tabs ul::-webkit-scrollbar { display: none; }
+.tabs a {
+  display: block; padding-block: 0.85rem 0.75rem; white-space: nowrap;
+  color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tabs .zh { font-family: "Noto Sans TC", var(--body); font-weight: 400; margin-left: 0.3rem; font-size: 0.9em; }
+
+/* Views */
+.view { display: flex; flex-direction: column; gap: 3rem; padding-block: 2.5rem 4rem; scroll-margin-top: 3rem; }
+.lede { margin: 0; font-family: var(--display); font-size: 1.24rem; line-height: 1.55; max-width: 41em; }
+.view[lang="zh-Hant"] .lede { font-family: "Noto Serif TC", var(--display); font-size: 1.1rem; line-height: 1.9; }
+.block { display: flex; flex-direction: column; gap: 1.1rem; }
+h2 {
+  display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap;
+  margin: 0; padding-bottom: 0.55rem; border-bottom: 1px solid var(--rule);
+  font-family: var(--display); font-weight: 500; font-size: 1.55rem; line-height: 1.2;
+  text-wrap: balance;
+}
+.view[lang="zh-Hant"] h2 { font-family: var(--zh-display); font-size: 1.4rem; }
+h2 .num { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; }
+h2 .sub { font-family: "Noto Sans TC", var(--body); font-size: 0.95rem; font-weight: 400; color: var(--muted); }
+h3 { margin: 0; font-size: 0.78rem; font-family: var(--mono); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+p { margin: 0; }
+.prose { max-width: 42em; display: flex; flex-direction: column; gap: 0.8rem; }
+.note { font-size: 0.88rem; color: var(--muted); max-width: 46em; }
+
+.dated { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.15rem; }
+.dated > li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1.25rem; }
+.when { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 0.15rem; }
+.what { min-width: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.t { font-weight: 600; }
+.cite em, .what em { font-style: italic; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; font-size: 0.8rem; }
+.tag { background: var(--tag); color: var(--muted); padding: 0.08rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+.doi { font-family: var(--mono); font-size: 0.76rem; overflow-wrap: anywhere; }
+.alt { color: var(--muted); font-size: 0.93rem; }
+
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chips li { border: 1px solid var(--rule); background: var(--surface); padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.92rem; }
+
+.plain { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; max-width: 46em; }
+
+.questions { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.questions li {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+  padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.25rem;
+}
+.questions .q-zh { font-weight: 500; }
+.questions .q-en { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+.callout {
+  background: var(--accent-soft); border-radius: 4px; padding: 1.25rem 1.35rem;
+  display: flex; flex-direction: column; gap: 0.7rem; max-width: 46em;
+}
+
+.course-code { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+footer { border-top: 1px solid var(--rule); }
+footer .wrap { padding-block: 1.5rem 2.5rem; font-size: 0.82rem; color: var(--muted); display: flex; flex-direction: column; gap: 0.3rem; }
+
+@media (max-width: 44rem) {
+  .masthead {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    grid-template-areas: "photo zh" "ident ident";
+    padding-block: 1.75rem 1.5rem; gap: 1.25rem;
+  }
+  .zh-name { writing-mode: horizontal-tb; align-self: end; font-size: 2.3rem; letter-spacing: 0.15em; padding: 0 0 0.3rem; }
+  .portrait img { box-shadow: 0.35rem 0.35rem 0 var(--accent-soft); }
+  .dated > li { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+  .questions { grid-template-columns: minmax(0, 1fr); }
+  .view { gap: 2.5rem; padding-block: 2rem 3rem; }
+  .tabs ul { gap: 1.25rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .view:not([hidden]) { animation: fade 0.25s ease-out both; }
+  @keyframes fade { from { opacity: 0.4; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+</style>
+</head>
+<body>
+<header class="wrap masthead">
+  <figure class="portrait"><img src="data:image/jpeg;base64,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" alt="Portrait of Josie I Chen" width="360" height="483"></figure>
+  <p class="zh-name" lang="zh-Hant">陳儀</p>
+  <div class="ident">
+    <p class="eyebrow">Behavioral &amp; Experimental Economics</p>
+    <h1>Josie I Chen</h1>
+    <p class="role">Associate Professor, Department of Economics, National Taiwan University
+      <span lang="zh-Hant">國立臺灣大學經濟學系 副教授</span></p>
+    <dl class="contact">
+      <dt>Email</dt>
+      <dd><span class="email" id="email">josiechen@ntu.edu.tw</span><button type="button" class="copy" id="copy-email">Copy</button></dd>
+      <dt>Office</dt>
+      <dd>Room 864, College of Social Sciences, No. 1, Sec. 4, Roosevelt Rd., Taipei 10617, Taiwan</dd>
+      <dt>Phone</dt>
+      <dd>+886-2-3366-8364</dd>
+    </dl>
+    <ul class="profiles">
+      <li><a href="https://scholar.google.com.tw/citations?user=-kSDAWcAAAAJ&amp;hl=zh-TW" target="_blank" rel="noopener">Google Scholar</a></li>
+      <li><a href="https://ideas.repec.org/f/pch1310.html" target="_blank" rel="noopener">IDEAS / RePEc</a></li>
+      <li><a href="https://orcid.org/0000-0002-7276-5817" target="_blank" rel="noopener">ORCID</a></li>
+      <li><a href="https://econ.ntu.edu.tw/en/archives/9539" target="_blank" rel="noopener">NTU Economics</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#cv" data-view="cv">CV</a></li>
+      <li><a href="#zh" data-view="zh" lang="zh-Hant">中文簡介</a></li>
+      <li><a href="#teaching" data-view="teaching">Teaching<span class="zh" lang="zh-Hant">教學</span></a></li>
+      <li><a href="#students" data-view="students">Students<span class="zh" lang="zh-Hant">學生</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+<!-- ============ CV (English) ============ -->
+<section class="view" id="cv" aria-label="Curriculum vitae">
+  <p class="lede">Josie I Chen is an Associate Professor of Economics at National Taiwan University. She received her Ph.D. in Economics from Brown University in 2015 and taught at National Taipei University before joining NTU in 2019. Her research uses laboratory, online and field experiments to study how language, emotion, identity and social feedback shape economic decisions, from time preference and bargaining to trust, energy use and preferences for democracy.</p>
+
+  <div class="block">
+    <h2><span class="num">1</span>Research Interests</h2>
+    <ul class="chips">
+      <li>Behavioral economics</li>
+      <li>Experimental economics</li>
+      <li>Language and intertemporal choice</li>
+      <li>Emotions and fairness</li>
+      <li>Identity, trust and prosocial lending</li>
+      <li>Feedback and energy conservation</li>
+      <li>Gender and leadership</li>
+      <li>Preferences for democracy</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">2</span>Publications</h2>
+    <ol class="dated">
+      <li><span class="when">2025</span><div class="what">
+        <p class="cite"><span class="t">“Does Future Time Reference Framing Increase Temporal Discounting? Evidence from English Monolinguals”</span> (with Yue Han and Tai-Sen He). <em>Journal of Economic Psychology</em> 107: 102796.</p>
+        <p class="meta"><span class="tag">Language</span><span class="tag">Time preference</span><a class="doi" href="https://doi.org/10.1016/j.joep.2025.102796" target="_blank" rel="noopener">doi:10.1016/j.joep.2025.102796</a></p>
+      </div></li>
+      <li><span class="when">2024</span><div class="what">
+        <p class="cite"><span class="t">“Obedience to Rules with Mild Formal Sanctions: The Roles of Informal Sanctions and Voting.”</span> <em>Taiwan Economic Review</em> 52(1): 1–48.</p>
+        <p class="meta"><span class="tag">Rules &amp; sanctions</span><span class="tag">Voting</span><a class="doi" href="https://doi.org/10.6277/TER.202401_52(1).0001" target="_blank" rel="noopener">doi:10.6277/TER.202401_52(1).0001</a></p>
+      </div></li>
+      <li><span class="when">2023</span><div class="what">
+        <p class="cite"><span class="t">“Performance Feedback in a Group Contest: A Field Experiment on Electricity Conservation”</span> (with Chia-Wen Chen and Ming-Jen Lin). <em>Journal of Economics &amp; Management Strategy</em> 32(3): 558–582.</p>
+        <p class="meta"><span class="tag">Field experiment</span><span class="tag">Energy</span><span class="tag">Feedback</span><a class="doi" href="https://doi.org/10.1111/jems.12459" target="_blank" rel="noopener">doi:10.1111/jems.12459</a></p>
+      </div></li>
+      <li><span class="when">2022</span><div class="what">
+        <p class="cite"><span class="t">“Does Speech Rate Influence Intertemporal Decisions? An Experimental Investigation”</span> (with Tai-Sen He and Hsin-Ya Liao). <em>PLoS ONE</em> 17(2): e0264356.</p>
+        <p class="meta"><span class="tag">Speech rate</span><span class="tag">Time preference</span><a class="doi" href="https://doi.org/10.1371/journal.pone.0264356" target="_blank" rel="noopener">doi:10.1371/journal.pone.0264356</a></p>
+      </div></li>
+      <li><span class="when">2021</span><div class="what">
+        <p class="cite"><span class="t">“Discounting from a Distance: The Effect of Pronoun Drop on Intertemporal Decisions”</span> (with Tai-Sen He). <em>Journal of Economic Psychology</em> 87: 102454.</p>
+        <p class="meta"><span class="tag">Language</span><span class="tag">Time preference</span><a class="doi" href="https://doi.org/10.1016/j.joep.2021.102454" target="_blank" rel="noopener">doi:10.1016/j.joep.2021.102454</a></p>
+      </div></li>
+      <li><span class="when">2019</span><div class="what">
+        <p class="cite"><span class="t">“The Effect of Language on Economic Behavior: Examining the Causal Link between Future Tense and Time Preference in the Lab”</span> (with Tai-Sen He and Yohanes Eko Riyanto). <em>European Economic Review</em> 120: 103307.</p>
+        <p class="meta"><span class="tag">Language</span><span class="tag">Time preference</span><span class="tag">Lab experiment</span><a class="doi" href="https://doi.org/10.1016/j.euroecorev.2019.103307" target="_blank" rel="noopener">doi:10.1016/j.euroecorev.2019.103307</a></p>
+      </div></li>
+      <li><span class="when">2019</span><div class="what">
+        <p class="cite"><span class="t">“Identity, Trust and Altruism: An Experiment on Preferences and Microfinance Lending”</span> (with Andrew Foster and Louis Putterman). <em>European Economic Review</em> 120: 103304.</p>
+        <p class="meta"><span class="tag">Identity</span><span class="tag">Trust</span><span class="tag">Microfinance</span><a class="doi" href="https://doi.org/10.1016/j.euroecorev.2019.103304" target="_blank" rel="noopener">doi:10.1016/j.euroecorev.2019.103304</a></p>
+      </div></li>
+      <li><span class="when">2018</span><div class="what">
+        <p class="cite"><span class="t">“Disapproval Aversion or Inflated Inequity Acceptance? The Impact of Expressing Emotions in Ultimatum Bargaining”</span> (with Kenju Kamei). <em>Experimental Economics</em> 21(4): 836–857.</p>
+        <p class="meta"><span class="tag">Emotions</span><span class="tag">Bargaining</span><span class="tag">Fairness</span><a class="doi" href="https://doi.org/10.1007/s10683-017-9554-z" target="_blank" rel="noopener">doi:10.1007/s10683-017-9554-z</a></p>
+      </div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">3</span>Working Papers</h2>
+    <ol class="dated">
+      <li><span class="when">2023</span><div class="what">
+        <p class="cite"><span class="t">“Gauging Preference for Democracy in Absence of Free Speech”</span> (with Louis Putterman and Diego Ramos-Toro). Brown University BRAVO Working Paper 2023-005.</p>
+        <p class="meta"><span class="tag">Democracy</span><span class="tag">Survey experiment</span><a class="doi" href="https://doi.org/10.2139/ssrn.4524131" target="_blank" rel="noopener">SSRN 4524131</a></p>
+      </div></li>
+      <li><span class="when">2022</span><div class="what">
+        <p class="cite"><span class="t">“Mind-Reading Ability Predicts Sales Performance: Evidence from Financial Consultants”</span> (with Tai-Sen He).</p>
+        <p class="meta"><span class="tag">Social cognition</span><span class="tag">Artefactual field experiment</span><a class="doi" href="https://doi.org/10.2139/ssrn.4174897" target="_blank" rel="noopener">SSRN 4174897</a></p>
+      </div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">4</span>Work in Progress</h2>
+    <ol class="dated">
+      <li><span class="when">2024</span><div class="what">
+        <p class="cite"><span class="t">“Closing the Gender Gap in Willingness to Contribute Ideas: A Lean-in Intervention”</span> (with Yu-Hsin Ho).</p>
+        <p class="meta"><span class="tag">Gender</span><a class="doi" href="https://doi.org/10.1257/rct.12775" target="_blank" rel="noopener">AEA RCT Registry</a></p>
+      </div></li>
+      <li><span class="when">2024</span><div class="what">
+        <p class="cite"><span class="t">“Energy Conservation through Goal Setting”</span> (with Yating Chuang and Chia-Wen Chen).</p>
+        <p class="meta"><span class="tag">Energy</span><span class="tag">Goal setting</span><a class="doi" href="https://doi.org/10.1257/rct.13799-1.1" target="_blank" rel="noopener">AEA RCT Registry</a></p>
+      </div></li>
+      <li><span class="when">2023</span><div class="what">
+        <p class="cite"><span class="t">“Examining the Impact of Single-Sex Schools on Women’s Willingness to Lead”</span> (with Fu-Hsuan Tsai).</p>
+        <p class="meta"><span class="tag">Gender</span><span class="tag">Leadership</span><a class="doi" href="https://doi.org/10.1257/rct.11079" target="_blank" rel="noopener">AEA RCT Registry</a></p>
+      </div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">5</span>Education</h2>
+    <ol class="dated">
+      <li><span class="when">2015</span><div class="what"><p><span class="t">Ph.D. in Economics</span>, Brown University</p></div></li>
+      <li><span class="when">2009</span><div class="what"><p><span class="t">B.A. in Economics and B.A. in Finance</span>, National Taiwan University</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">6</span>Academic Positions</h2>
+    <ol class="dated">
+      <li><span class="when">2020–</span><div class="what"><p><span class="t">Associate Professor</span>, Department of Economics, National Taiwan University</p></div></li>
+      <li><span class="when">2019–2020</span><div class="what"><p><span class="t">Assistant Professor</span>, Department of Economics, National Taiwan University</p></div></li>
+      <li><span class="when">2015–2019</span><div class="what"><p><span class="t">Assistant Professor</span>, Department of Economics, National Taipei University</p></div></li>
+    </ol>
+    <h3>Visiting positions</h3>
+    <ol class="dated">
+      <li><span class="when">2018</span><div class="what"><p>Visiting Scholar, Department of Economics, Brown University (June–September)</p></div></li>
+      <li><span class="when">2016</span><div class="what"><p>Visiting Scholar, Department of Economics, Brown University</p></div></li>
+      <li><span class="when">2016</span><div class="what"><p>Visiting Scholar, Kiel Institute for the World Economy (April)</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">7</span>Awards and Grants</h2>
+    <ol class="dated">
+      <li><span class="when">2023</span><div class="what"><p>Excellence in Teaching Award, National Taiwan University <span class="alt" lang="zh-Hant">臺灣大學教學優良獎</span></p></div></li>
+      <li><span class="when">2022</span><div class="what"><p>Award for Teaching Excellence in English, National Taiwan University <span class="alt" lang="zh-Hant">臺灣大學全英語授課教學優良教師</span></p></div></li>
+      <li><span class="when">2019, 2022</span><div class="what"><p>Sun Chen Young Scholar Award <span class="alt" lang="zh-Hant">孫震年輕學者</span></p></div></li>
+      <li><span class="when">2021</span><div class="what"><p>Han Hsiao-Chung Young Scholar Award <span class="alt" lang="zh-Hant">韓效忠青年學者</span></p></div></li>
+      <li><span class="when">2018–2023</span><div class="what"><p>MOST Young Scholar Fellowship, Ministry of Science and Technology, Taiwan</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">8</span>Conference Presentations</h2>
+    <ol class="dated">
+      <li><span class="when">2023</span><div class="what"><p>The 5th Reading Experimental and Behavioural Economics Workshop</p></div></li>
+      <li><span class="when">2020</span><div class="what"><p>The 4th Joint Economics Symposium of 4 Leading Universities in Taiwan and Japan</p></div></li>
+      <li><span class="when">2019</span><div class="what"><p>NTU–UT Joint Workshop on Experimental Social Science</p></div></li>
+      <li><span class="when">2018</span><div class="what"><p>Asia-Pacific Economic Science Association Meeting; Contests: Theory and Evidence Conference</p></div></li>
+      <li><span class="when">2017</span><div class="what"><p>Asia-Pacific Economic Science Association Meeting; European Economic Science Association Meeting</p></div></li>
+      <li><span class="when">2016</span><div class="what"><p>Western Economic Association International 91st Annual Conference; XMU International Workshop on Experimental Economics</p></div></li>
+      <li><span class="when">2015</span><div class="what"><p>ASSA Annual Meeting; Biennial Social Dilemmas Conference (poster)</p></div></li>
+      <li><span class="when">2014</span><div class="what"><p>Economic Science Association International Meeting; Science of Philanthropy Initiative Conference (poster)</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">9</span>Invited Seminars</h2>
+    <ol class="dated">
+      <li><span class="when">2023</span><div class="what"><p>National Taipei University; Academia Sinica</p></div></li>
+      <li><span class="when">2022</span><div class="what"><p>National Central University; Feng Chia University</p></div></li>
+      <li><span class="when">2020</span><div class="what"><p>Chung Yuan Christian University; National Chengchi University; National Taipei University</p></div></li>
+      <li><span class="when">2019</span><div class="what"><p>International University of Japan; Industrial Technology Research Institute</p></div></li>
+      <li><span class="when">2017</span><div class="what"><p>National Tsing Hua University</p></div></li>
+      <li><span class="when">2016</span><div class="what"><p>Kiel Institute for the World Economy; National Chengchi University; National Taipei University (Department of Sociology)</p></div></li>
+      <li><span class="when">2015</span><div class="what"><p>National Taiwan University; Academia Sinica; Feng Chia University; National Central University</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">10</span>Professional Service</h2>
+    <ol class="dated">
+      <li><span class="when">2020–</span><div class="what"><p>Organizer, Virtual East Asia Experimental and Behavioral Economics Seminar Series</p></div></li>
+      <li><span class="when">Referee</span><div class="what"><p><em>The Quarterly Journal of Economics</em>, <em>Journal of Development Economics</em>, <em>Journal of Economic Behavior &amp; Organization</em>, <em>Taiwan Economic Review</em>, <em>Taipei Economic Inquiry</em>, <em>Academia Economic Papers</em></p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 中文簡介 ============ -->
+<section class="view" id="zh" lang="zh-Hant" aria-label="中文簡介">
+  <p class="lede">陳儀現任國立臺灣大學經濟學系副教授，研究領域為行為經濟學與實驗經濟學。她於 2009 年取得臺大經濟學與財務金融雙學士，2015 年取得美國布朗大學經濟學博士，2015 至 2019 年任教於國立臺北大學經濟學系，2019 年起任教於臺大。她以實驗室實驗、線上實驗與田野實驗，研究語言、情緒、身分認同與社會回饋如何影響經濟決策，主題包括時間偏好、議價與公平、信任與微型貸款、節約用電、性別與領導意願，以及民主偏好的測量。</p>
+
+  <div class="block">
+    <h2><span class="num">1</span>研究領域</h2>
+    <ul class="chips">
+      <li>行為經濟學</li><li>實驗經濟學</li><li>語言與跨期決策</li><li>情緒與公平</li>
+      <li>身分認同、信任與微型貸款</li><li>回饋與節約能源</li><li>性別與領導</li><li>民主偏好</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">2</span>學歷</h2>
+    <ol class="dated">
+      <li><span class="when">2015</span><div class="what"><p><span class="t">經濟學博士</span>，美國布朗大學（Brown University）</p></div></li>
+      <li><span class="when">2009</span><div class="what"><p><span class="t">經濟學士、財務金融學士</span>，國立臺灣大學</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">3</span>經歷</h2>
+    <ol class="dated">
+      <li><span class="when">2020–</span><div class="what"><p><span class="t">副教授</span>，國立臺灣大學經濟學系</p></div></li>
+      <li><span class="when">2019–2020</span><div class="what"><p><span class="t">助理教授</span>，國立臺灣大學經濟學系</p></div></li>
+      <li><span class="when">2015–2019</span><div class="what"><p><span class="t">助理教授</span>，國立臺北大學經濟學系</p></div></li>
+      <li><span class="when">2016, 2018</span><div class="what"><p>訪問學者，美國布朗大學經濟學系</p></div></li>
+      <li><span class="when">2016</span><div class="what"><p>訪問學者，德國基爾世界經濟研究所（Kiel Institute for the World Economy）</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">4</span>期刊論文</h2>
+    <ol class="dated">
+      <li><span class="when">2025</span><div class="what"><p>Chen, J. I., Han, Y., &amp; He, T.-S. “Does Future Time Reference Framing Increase Temporal Discounting? Evidence from English Monolinguals.” <em>Journal of Economic Psychology</em>, 107, 102796.</p></div></li>
+      <li><span class="when">2024</span><div class="what"><p>Chen, J. I. “Obedience to Rules with Mild Formal Sanctions: The Roles of Informal Sanctions and Voting.” 《經濟論文叢刊》（<em>Taiwan Economic Review</em>）, 52(1), 1–48.</p></div></li>
+      <li><span class="when">2023</span><div class="what"><p>Chen, C.-W., Chen, J. I., &amp; Lin, M.-J. “Performance Feedback in a Group Contest: A Field Experiment on Electricity Conservation.” <em>Journal of Economics &amp; Management Strategy</em>, 32(3), 558–582.</p></div></li>
+      <li><span class="when">2022</span><div class="what"><p>Chen, J. I., He, T.-S., &amp; Liao, H.-Y. “Does Speech Rate Influence Intertemporal Decisions? An Experimental Investigation.” <em>PLoS ONE</em>, 17(2), e0264356.</p></div></li>
+      <li><span class="when">2021</span><div class="what"><p>Chen, J. I., &amp; He, T.-S. “Discounting from a Distance: The Effect of Pronoun Drop on Intertemporal Decisions.” <em>Journal of Economic Psychology</em>, 87, 102454.</p></div></li>
+      <li><span class="when">2019</span><div class="what"><p>Chen, J. I., He, T.-S., &amp; Riyanto, Y. E. “The Effect of Language on Economic Behavior: Examining the Causal Link between Future Tense and Time Preference in the Lab.” <em>European Economic Review</em>, 120, 103307.</p></div></li>
+      <li><span class="when">2019</span><div class="what"><p>Chen, J. I., Foster, A., &amp; Putterman, L. “Identity, Trust and Altruism: An Experiment on Preferences and Microfinance Lending.” <em>European Economic Review</em>, 120, 103304.</p></div></li>
+      <li><span class="when">2018</span><div class="what"><p>Chen, J. I., &amp; Kamei, K. “Disapproval Aversion or Inflated Inequity Acceptance? The Impact of Expressing Emotions in Ultimatum Bargaining.” <em>Experimental Economics</em>, 21(4), 836–857.</p></div></li>
+    </ol>
+    <p class="note">工作論文與進行中研究請見英文 <a href="#cv" data-view="cv">CV</a>。</p>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">5</span>獎項與計畫</h2>
+    <ol class="dated">
+      <li><span class="when">2023</span><div class="what"><p>國立臺灣大學教學優良獎</p></div></li>
+      <li><span class="when">2022</span><div class="what"><p>國立臺灣大學全英語授課教學優良教師</p></div></li>
+      <li><span class="when">2019, 2022</span><div class="what"><p>孫震年輕學者</p></div></li>
+      <li><span class="when">2021</span><div class="what"><p>韓效忠青年學者</p></div></li>
+      <li><span class="when">2018–2023</span><div class="what"><p>科技部年輕學者養成計畫</p></div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2><span class="num">6</span>學術服務</h2>
+    <ol class="dated">
+      <li><span class="when">2020–</span><div class="what"><p>籌辦 Virtual East Asia Experimental and Behavioral Economics Seminar Series（東亞實驗與行為經濟學線上研討會）</p></div></li>
+      <li><span class="when">審稿</span><div class="what"><p><em>The Quarterly Journal of Economics</em>、<em>Journal of Development Economics</em>、<em>Journal of Economic Behavior &amp; Organization</em>、《經濟論文叢刊》、《經濟研究》、《經濟論文》</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ Teaching ============ -->
+<section class="view" id="teaching" aria-label="Teaching">
+  <div class="prose">
+    <p class="lede">Josie Chen teaches the department’s English-taught Microeconomics sequence as a flipped classroom, along with courses on experimental methods and behavioral economics. She received NTU’s Award for Teaching Excellence in English in 2022 and its Excellence in Teaching Award in 2023.</p>
+    <p lang="zh-Hant" class="alt">陳儀老師以翻轉教學方式開設全英語授課的個體經濟學，並開授實驗經濟學與行為經濟學相關課程；曾獲臺大全英語授課教學優良教師（2022）及臺大教學優良獎（2023）。</p>
+  </div>
+
+  <div class="block">
+    <h2>Undergraduate and Graduate Courses <span class="sub" lang="zh-Hant">學士班與研究所課程</span></h2>
+    <ol class="dated">
+      <li><span class="when">Full year</span><div class="what">
+        <p><span class="t">Microeconomics</span> <span lang="zh-Hant">個體經濟學（上、下）</span></p>
+        <p class="alt">Required course for economics majors. Taught in English with a flipped-classroom format. 3 credits per semester.</p>
+        <p class="meta"><span class="course-code">ECON2018</span><span class="tag">English-taught</span><span class="tag">Flipped classroom</span></p>
+      </div></li>
+      <li><span class="when">Fall</span><div class="what">
+        <p><span class="t">Introduction to Experimental Economics I: Laboratory and Online Experiments</span> <span lang="zh-Hant">實驗經濟學導論一：實驗室實驗和線上實驗</span></p>
+        <p class="alt">Open to third-year undergraduates and above, master’s and Ph.D. students. 2 credits.</p>
+        <p class="meta"><span class="course-code">ECON5234</span><span class="tag">Experimental methods</span></p>
+      </div></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h2>Master’s Program for Working Professionals <span class="sub" lang="zh-Hant">經濟學系碩士在職專班</span></h2>
+    <ol class="dated">
+      <li><span class="when">Fall</span><div class="what">
+        <p><span class="t">Price Analysis III</span> <span lang="zh-Hant">價格分析三</span></p>
+        <p class="meta"><span class="course-code">ECON7931</span><span class="tag">2 credits</span></p>
+      </div></li>
+      <li><span class="when">Fall</span><div class="what">
+        <p><span class="t">Topics in Behavioral Economics</span> <span lang="zh-Hant">行為經濟學專題</span></p>
+        <p class="meta"><span class="course-code">ECON7955</span><span class="tag">1 credit</span></p>
+      </div></li>
+      <li><span class="when">Fall</span><div class="what">
+        <p><span class="t">Experimental Methods in Economic and Social Science Research</span> <span lang="zh-Hant">經濟與社會科學研究實驗方法</span></p>
+        <p class="meta"><span class="course-code">ECON7957</span><span class="tag">1 credit</span></p>
+      </div></li>
+    </ol>
+    <p class="note">Course list as offered in the 2026–27 academic year (115-1). Schedules and syllabi are on the <a href="https://course.ntu.edu.tw/" target="_blank" rel="noopener">NTU Course Website</a> and NTU COOL.</p>
+  </div>
+</section>
+
+<!-- ============ Students ============ -->
+<section class="view" id="students" aria-label="Students">
+  <div class="block">
+    <h2>Research Assistants <span class="sub" lang="zh-Hant">招募研究助理</span></h2>
+    <div class="callout">
+      <p>The lab designs and runs economic experiments at the intersection of economics, psychology and political science. Each summer it recruits undergraduate research assistants from any department. No economics background is required. The lab looks for curiosity about human behavior, careful work, and patience with research questions.</p>
+      <p lang="zh-Hant">團隊研究橫跨經濟學、心理學與政治學，透過設計實驗與蒐集資料探討人們如何做決策。每年暑期招募大學部研究助理，不限科系、不需經濟學背景，適合對人類行為好奇、樂於閱讀與討論、細心負責、對研究有耐心的同學。</p>
+      <p class="meta"><a href="https://econ.ntu.edu.tw/archives/18266" target="_blank" rel="noopener">2026 recruitment notice 招募公告</a><span class="tag">Contact: josiechen@ntu.edu.tw</span></p>
+    </div>
+    <h3>What research assistants do</h3>
+    <ul class="plain">
+      <li>Read the academic literature and discuss experimental designs with the team <span class="alt" lang="zh-Hant">閱讀文獻、討論實驗設計</span></li>
+      <li>Recruit participants and run data collection, including finding research sites <span class="alt" lang="zh-Hant">招募受試者、尋找研究場域、蒐集資料</span></li>
+      <li>Carry out careful, long-term statistical analysis <span class="alt" lang="zh-Hant">細緻且長期的統計分析</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>Questions the Lab Is Working On <span class="sub" lang="zh-Hant">團隊目前的研究問題</span></h2>
+    <ul class="questions">
+      <li><span class="q-zh" lang="zh-Hant">語言框架的用字會影響儲蓄決策嗎？</span><span class="q-en">Does the wording of a language frame change saving decisions?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">說話速度會改變人對未來的感受嗎？</span><span class="q-en">Does speech rate change how people feel about the future?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">把室友分組競賽能減少用電嗎？</span><span class="q-en">Does putting roommates into teams reduce electricity use?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">當人們隱藏真實想法時，如何測量真正的民主偏好？</span><span class="q-en">How can we measure true preferences for democracy when people hide their views?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">善於讀懂他人意圖的人賺得比較多嗎？</span><span class="q-en">Do people who read others’ intentions well earn more?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">女校會讓女性更願意競爭嗎？</span><span class="q-en">Do women’s schools make women more willing to compete?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">上英文課會讓記憶變差嗎？</span><span class="q-en">Does taking a class in English hurt memory?</span></li>
+      <li><span class="q-zh" lang="zh-Hant">AI 撰寫的文字會讓謊言更有說服力嗎？</span><span class="q-en">Does AI-written text help people lie more convincingly?</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>Master’s Theses Supervised <span class="sub" lang="zh-Hant">指導碩士論文</span></h2>
+    <ol class="dated">
+      <li><span class="when">2026</span><div class="what">
+        <p><span class="t" lang="zh-Hant">莊詠州</span> Yung-Chou Chung</p>
+        <p lang="zh-Hant">誰以行動支持永續農業？從 ESG 認知到實際消費行為之實證分析</p>
+        <p class="alt">From ESG Awareness to Actual Consumption: An Empirical Study on Supporting Sustainable Agriculture</p>
+        <p class="meta"><span class="tag">NTU Economics</span><a class="doi" href="https://hdl.handle.net/11296/a483q2" target="_blank" rel="noopener">hdl:11296/a483q2</a></p>
+      </div></li>
+      <li><span class="when">2024</span><div class="what">
+        <p><span class="t" lang="zh-Hant">沈姵昕</span> Pei-Xin Shen</p>
+        <p lang="zh-Hant">性別平等悖論：經濟條件對台灣高中生的風險偏好與性別刻板印象的影響</p>
+        <p class="alt">The Gender Equality Paradox: The Impact of Economic Conditions on Risk Preferences and Gender Stereotypes among Taiwanese High School Students</p>
+        <p class="meta"><span class="tag">NTU Economics</span><a class="doi" href="https://hdl.handle.net/11296/982uep" target="_blank" rel="noopener">hdl:11296/982uep</a></p>
+      </div></li>
+      <li><span class="when">2024</span><div class="what">
+        <p><span class="t" lang="zh-Hant">蕭聖諺</span> Sheng-Yen Hsiao</p>
+        <p lang="zh-Hant">外語暴露效應：實驗室中的經濟決策</p>
+        <p class="alt">The Effect of Foreign Language Exposure: Lab Experiment on Economic Decisions</p>
+        <p class="meta"><span class="tag">NTU Economics</span><a class="doi" href="https://hdl.handle.net/11296/q78amt" target="_blank" rel="noopener">hdl:11296/q78amt</a></p>
+      </div></li>
+      <li><span class="when">2024</span><div class="what">
+        <p><span class="t" lang="zh-Hant">廖信雅</span> Hsin-Ya Liao</p>
+        <p lang="zh-Hant">器官捐贈資訊對民眾態度的影響</p>
+        <p class="alt">The Impact of Information on People’s Attitudes Toward Organ Donation</p>
+        <p class="meta"><span class="tag">NTU Economics</span><span class="tag">Coauthor, PLoS ONE 2022</span><a class="doi" href="https://hdl.handle.net/11296/2v7wcj" target="_blank" rel="noopener">hdl:11296/2v7wcj</a></p>
+      </div></li>
+      <li><span class="when">2023</span><div class="what">
+        <p><span class="t" lang="zh-Hant">蔡馥亘</span> Fu-Hsuan Tsai</p>
+        <p lang="zh-Hant">高中生擔任代表的意願性別差異</p>
+        <p class="alt">Gender Disparities in Willingness to be Representative Among High School Students</p>
+        <p class="meta"><span class="tag">NTU Economics</span><a class="doi" href="https://hdl.handle.net/11296/4vdy7x" target="_blank" rel="noopener">hdl:11296/4vdy7x</a></p>
+      </div></li>
+      <li><span class="when">2023</span><div class="what">
+        <p><span class="t" lang="zh-Hant">黃家恩</span> Chia-En Huang</p>
+        <p lang="zh-Hant">康德道德與社會偏好在類聚效應下對合作行為的影響</p>
+        <p class="alt">Kantian Morality and Social Preferences on Cooperative Behavior under Assortative Matching</p>
+        <p class="meta"><span class="tag">NTU Economics</span><span class="tag">Co-advised with Chun-Fang Chiang 江淳芳</span><a class="doi" href="https://hdl.handle.net/11296/2dgjw7" target="_blank" rel="noopener">hdl:11296/2dgjw7</a></p>
+      </div></li>
+      <li><span class="when">2023</span><div class="what">
+        <p><span class="t" lang="zh-Hant">胡將相</span> Jiang-Shiang Hu</p>
+        <p lang="zh-Hant">「將」被看見？以眼動儀重新檢視未來式對於跨期選擇之影響</p>
+        <p class="alt">[Re-examining the effect of the future tense on intertemporal choice with eye tracking]</p>
+        <p class="meta"><span class="tag">NTU Economics</span><span class="tag">Co-advised with Wei James Chen 陳暐</span><a class="doi" href="https://hdl.handle.net/11296/36ejb7" target="_blank" rel="noopener">hdl:11296/36ejb7</a></p>
+      </div></li>
+      <li><span class="when">2022</span><div class="what">
+        <p><span class="t" lang="zh-Hant">陳庭偉</span> Ting-Wei Chen</p>
+        <p lang="zh-Hant">公共參與經驗對投票之影響：以經濟學實驗進行探討</p>
+        <p class="alt">The Effect of Public Participation on Voter Turnout: A Lab Experiment</p>
+        <p class="meta"><span class="tag">NTU Economics</span><span class="tag">Co-advised with Chun-Fang Chiang 江淳芳</span><a class="doi" href="https://hdl.handle.net/11296/9nmc47" target="_blank" rel="noopener">hdl:11296/9nmc47</a></p>
+      </div></li>
+      <li><span class="when">2019</span><div class="what">
+        <p><span class="t" lang="zh-Hant">陳彤</span> Ton Chen</p>
+        <p lang="zh-Hant">以經濟學實驗分析金錢誘因對微型貸款出資人貸款意願的影響</p>
+        <p class="alt">The Effect of Monetary Incentive on Microfinance Lending Decisions: An Economic Experiment</p>
+        <p class="meta"><span class="tag">National Taipei University, Economics</span><a class="doi" href="https://hdl.handle.net/11296/5k8xr5" target="_blank" rel="noopener">hdl:11296/5k8xr5</a></p>
+      </div></li>
+    </ol>
+    <p class="note">From the National Digital Library of Theses and Dissertations in Taiwan (<a href="https://ndltd.ncl.edu.tw/" target="_blank" rel="noopener">臺灣博碩士論文知識加值系統</a>), listed by year of publication. Each link opens the thesis record.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Josie I Chen <span lang="zh-Hant">陳儀</span> · Department of Economics, National Taiwan University</p>
+    <p>Last updated October 2026</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var views = ["cv", "zh", "teaching", "students"];
+  var links = document.querySelectorAll("[data-view]");
+  var nav = document.querySelector(".tabs");
+
+  function show(id, scroll) {
+    if (views.indexOf(id) === -1) id = "cv";
+    views.forEach(function (v) {
+      var el = document.getElementById(v);
+      if (el) el.hidden = v !== id;
+    });
+    document.querySelectorAll(".tabs a").forEach(function (a) {
+      if (a.getAttribute("data-view") === id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    if (scroll && nav) {
+      var top = nav.getBoundingClientRect().top + window.scrollY;
+      if (window.scrollY > top) window.scrollTo(0, top);
+    }
+  }
+
+  links.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var id = a.getAttribute("data-view");
+      show(id, true);
+      try { history.replaceState(null, "", "#" + id); } catch (err) {}
+    });
+  });
+
+  window.addEventListener("hashchange", function () { show(location.hash.slice(1), true); });
+  show(location.hash.slice(1), false);
+
+  var btn = document.getElementById("copy-email");
+  var email = document.getElementById("email");
+  if (btn && email) {
+    btn.addEventListener("click", function () {
+      var text = email.textContent.trim();
+      function selectIt() {
+        var r = document.createRange(); r.selectNodeContents(email);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = "Selected";
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { btn.textContent = "Copied"; }, selectIt);
+      } else { selectIt(); }
+      setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+    });
+  }
+})();
+</script>
+</body>
+</html>
